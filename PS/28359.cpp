@@ -16,7 +16,5 @@ int main() {
 	sort(A, A + N);
 	cout << sum + mx;
 	cout << '\n';
-	for (int i = 0; i < N; i++)
-		if (A[i] != f) cout << A[i] << ' ';
-	for (int i = 1; i <= mx / f; i++) cout << f << ' ';
+	for (int i = 0; i < N; i++) cout << A[i] << ' ';
 }
