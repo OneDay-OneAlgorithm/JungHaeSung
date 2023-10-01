@@ -1,9 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
-int K, N, A[101010];
+using ll = long long;
+ll K, N, A[101010];
 
-int f(int x) {
-	int cnt = 0;
+ll f(int x) {
+	ll cnt = 0;
 	for (int i = 1; i <= K; i++) cnt += A[i] / x;
 	return cnt;
 }
@@ -13,7 +14,7 @@ int main() {
 	cin >> K >> N;
 	for (int i = 1; i <= K; i++) cin >> A[i];
 
-	int l = 1, r = (1 << 30) - 1;
+	ll l = 1, r = (1 << 31) - 1;
 	while (l < r) {
 		int m = (l + r + 1) / 2;
 		if (f(m) >= N)
