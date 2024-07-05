@@ -59,7 +59,7 @@ int main() {
     ... 아래랑 같음
 }
 ```
-$n^2$ LIS로 하면 시간초과
+$n^2$ LIS : 시간초과
 
 ```cpp
 #include <bits/stdc++.h>
@@ -114,7 +114,7 @@ int main() {
 	for (int i = 2; i <= N; i++) cout << ans[i] << ' ';
 }
 ```
-$n \log n$ LIS가 아직 좀 낯설음
+$n \log n$ LIS 풀이
 </details>
 
 ## F
@@ -165,13 +165,34 @@ int main() {
 ```
 </details>
 
-<!-- ## I
+## I
 <details>
 <summary>c++</summary>
 
 ```cpp
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+ll N, A[101010], dp[101010];
+int main() {
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cin >> N;
+	for (int i = 1; i <= N; i++) cin >> A[i];
+
+	for (int i = 1; i <= N; i++) {
+		dp[i] = dp[i - 1];
+		int sum = 0;
+		for (int j = i; j >= 1; j--) {
+			sum += A[j];
+			if (sum % 2 == 1) ++dp[i];
+		}
+	}
+	cout << dp[N];
+}
 ```
-</details> -->
+단순 dp : 시간초과
+</details>
 
 ## L
 <details>
