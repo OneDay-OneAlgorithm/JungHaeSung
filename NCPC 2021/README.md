@@ -52,6 +52,24 @@ int main() {
 }
 ```
 
+## K
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+bool v[1010];
+int N, A[55];
+
+int main() {
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cin >> N;
+	for (int i = 1; i <= N; i++) cin >> A[i];
+	for (int i = 1, t; i <= N-1; i++) cin >> t, v[t] = true;
+	for (int i = 1; i <= N; i++) 
+		if (!v[A[i]]) cout << A[i];
+}
+```
+
 ## L
 ```cpp
 #include <bits/stdc++.h>
