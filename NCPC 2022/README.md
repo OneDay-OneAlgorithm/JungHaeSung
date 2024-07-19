@@ -21,6 +21,28 @@ int main() {
 }
 ```
 
+## D
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+int main() {
+	ll r, ansx, ansy, min_dist = 1e18;
+	cin >> r;
+	for (ll x = 1, y = r; x <= y; x++) {
+		while (x * x + (y - 1) * (y - 1) > r * r) --y;
+		ll dist = x * x + y * y;
+		if (dist < min_dist) {
+			min_dist = dist;
+			ansx = x, ansy = y;
+		}
+	}
+	cout << ansx << ' ' << ansy;
+}
+```
+아니 `sqrt`쓰면 왜 안 됨?
+
 ## H
 ```cpp
 #include <bits/stdc++.h>
