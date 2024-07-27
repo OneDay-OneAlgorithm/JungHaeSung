@@ -1,6 +1,36 @@
 # BAPC 2022
 https://www.acmicpc.net/category/detail/3222
 
+## B
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
+
+	const double PI = 3.14159265358979323846;
+	int num = 0, left_end = 0, right_end = 0;
+	double tan = 0;
+	cin >> num;
+
+	vector<pair<int, int>> points(num);
+	for (auto& [x, y] : points) cin >> x >> y;
+	left_end = points[0].first;
+	right_end = points.back().first;
+
+	for (auto [x, y] : points) {
+		tan = max(tan, (double)y / (x - left_end));
+		tan = max(tan, (double)y / (right_end - x));
+	}
+
+	cout << fixed << setprecision(6) << atan(tan) * 180 / PI;
+}
+```
+최대가 되려면 무조건 해안선을 포함해야 한다는 관찰을 하는 게 어려웠던 문제.
+
 ## E
 ```cpp
 #include <bits/stdc++.h>
