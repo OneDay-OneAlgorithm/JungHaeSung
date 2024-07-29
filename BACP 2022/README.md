@@ -47,6 +47,55 @@ int main() {
 }
 ```
 
+## F
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+map<char, int> m = {{'N', 0}, {'E', 90}, {'S', 180}, {'W', 270}};
+
+double parse(string dir) {
+	double angle = m[dir[0]], d = 45;
+	if (dir.length() == 1) return angle;
+
+	string sub = dir.substr(0, 2);
+	for (int i = 1; i < dir.length(); i++) {
+		if (sub == "EN") {
+			if (dir[i] == 'N')
+				angle -= d;
+			else
+				angle += d;
+		} else if (sub == "ES") {
+			if (dir[i] == 'S')
+				angle += d;
+			else
+				angle -= d;
+		} else if (sub == "WN") {
+			if (dir[i] == 'N')
+				angle += d;
+			else
+				angle -= d;
+		} else if (sub == "WS") {
+			if (dir[i] == 'S')
+				angle -= d;
+			else
+				angle += d;
+		}
+		d /= 2;
+	}
+	return angle;
+}
+
+int main() {
+	string X, Y;
+	cin >> X >> Y;
+	reverse(X.begin(), X.end());
+	reverse(Y.begin(), Y.end());
+	double x = parse(X), y = parse(Y);
+	if (x > y) swap(x, y);
+	cout << fixed << setprecision(9) << min(y - x, 360 - (y - x));
+}
+```
+
 ## I
 ```cpp
 #include <bits/stdc++.h>
