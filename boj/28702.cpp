@@ -1,0 +1,20 @@
+#include <bits/stdc++.h>
+using namespace std;
+bool isInt(char c) { return '0' <= c && c <= '9'; }
+string f(int n) {
+	if (n % 5 == 0 && n % 3 == 0) return "FizzBuzz";
+	if (n % 3 == 0) return "Fizz";
+	if (n % 5 == 0) return "Buzz";
+	return to_string(n);
+}
+
+int main() {
+	string s[3];
+	cin >> s[0] >> s[1] >> s[2];
+	for (int i = 0; i < 3; i++) {
+		if (isInt(s[i][0])) {
+			cout << f(stoi(s[i]) + 3 - i);
+			return 0;
+		}
+	}
+}
