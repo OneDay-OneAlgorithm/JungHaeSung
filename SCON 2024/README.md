@@ -2,10 +2,6 @@
 https://www.acmicpc.net/category/detail/4206
 
 ## A
-
-<details>
-<summary>c++</summary>
-
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -25,12 +21,8 @@ int main() {
 	cout << ans;
 }
 ```
-</details>
 
 ## B
-<details>
-<summary>c++</summary>
-
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -60,12 +52,8 @@ int main() {
 	}
 }
 ```
-</details>
 
 ## C
-<details>
-<summary>c++</summary>
-
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -120,12 +108,8 @@ int main() {
 	}
 }
 ```
-</details>
 
 ## D
-<details>
-<summary>c++</summary>
-
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -144,12 +128,8 @@ int main() {
 	while (T--) cout << solve() << '\n';
 }
 ```
-</details>
 
 ## E
-<details>
-<summary>c++</summary>
-
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -182,12 +162,8 @@ int main() {
 ```
 배열 길이 1010으로 했을 떄 런타임 에러 뜨는게 아니라 시간초과가 떴음.
 그거 때문에 배열 길이 못보고 한참 헤맴.. 어이없네.. 왜 시간초과가 뜬거지
-</details>
 
 ## F
-<details>
-<summary>c++</summary>
-
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -215,20 +191,10 @@ int main() {
 	cout << '\n';
 }
 ```
-</details>
 
 ## G
-<!-- <details>
-<summary>c++</summary>
-
-```cpp
-```
-</details> -->
 
 ## H
-<details>
-<summary>c++</summary>
-
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -256,7 +222,6 @@ int main() {
 	cout << max(dp[0][N + K * 2], dp[1][N + K * 2]);
 }
 ```
-</details>
 
 ## I
 <!-- <details>
@@ -267,9 +232,40 @@ int main() {
 </details> -->
 
 ## J
-<!-- <details>
-<summary>c++</summary>
-
 ```cpp
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+int N, M;
+vector<pair<int, ll>> G[303030];
+bool vis[303030];
+
+// x으로 1->N에 도달할 수 있는지 여부
+bool dfs(int v, ll x) {
+	if (v == N) return true;
+	if (vis[v]) return false;
+	vis[v] = true;
+	for (auto [u, w] : G[v])
+		if ((w & x) == w && dfs(u, x)) return true;
+	return false;
+}
+
+int main() {
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cin >> N >> M;
+	for (ll i = 1, u, v, w; i <= M; i++) {
+		cin >> u >> v >> w;
+		G[u].emplace_back(v, w);
+		G[v].emplace_back(u, w);
+	}
+
+	ll ans = (1L << 60) - 1;
+	for (int i = 59; i >= 0; i--) {
+		memset(vis, 0, sizeof vis);
+		ans -= 1L << i;
+		if (!dfs(1, ans)) ans += 1L << i;
+	}
+	cout << ans;
+}
 ```
-</details> -->
